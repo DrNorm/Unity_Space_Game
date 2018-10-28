@@ -1,22 +1,39 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
+    //movement variables
     public float moveSpeed = 10f;
     public float rotationSpeed = 50f;
     private float acceleration = 0 ;
     public float accelerationSpeed = 2 ;
     private Vector3 movement = Vector3.zero;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    //shoot() variables
+    public float shootRange = 3f;
+    public int shootLevel = 1;
+    public Transform bulletPrefab;
+    private float shootTimerMax = 10;
+    public float shootTimer = 0;
+    
+
+    //scoring
+    private int score=0;
+    private Text scoreText;
+
+    // Use this for initialization
+    void Start () {
+        scoreText = GameObject.Find("UIScoreText").GetComponent<Text>();
+        scoreText.text = "Score : " + score;
+    }
 	
 	// Update is called once per frame
 	void Update () {
+
+        scoreText.text = "Score : "+score;
 
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))
         {
@@ -58,6 +75,59 @@ public class Player : MonoBehaviour {
 
         }
 
+        if (Input.GetKey(KeyCode.Space) )
+        {
+
+            if(shootTimer ==0)shoot();
+            shootTimer += 50*Time.deltaTime;
+            
+
+        }
+        if (shootTimer >= shootTimerMax) shootTimer = 0;
+
+
 
     }
+
+    
+
+    //shooting methods
+    private void shoot()
+    {
+        switch (shootLevel)
+        {
+            case 1:
+                shootLvl1();
+                break;
+            default :
+                shootLvl1();
+                break;
+        }
+    }
+
+    private void shootLvl1()
+    {
+        Transform bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        bullet.gameObject.GetComponent<Bullet>().template = false;
+        
+    }
+    
+
+
+    //scoring methods
+    public void setScore(int s)
+    {
+        score = s;
+    }
+
+    public int getscore()
+    {
+        return score;
+    }
+
+    public void addScore (int s)
+    {
+        score += s;
+    }
+
 }

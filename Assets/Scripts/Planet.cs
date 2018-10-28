@@ -23,4 +23,13 @@ public class Planet : MonoBehaviour {
         transform.RotateAround(centre.position, Vector3.up, orbitSpeed*Time.deltaTime);
 
 	}
+
+    public void death()
+    {
+        Debug.Log("i have dieded");
+        GameObject[] shiplist = GameObject.FindGameObjectsWithTag("Ship");
+        foreach( GameObject ship in shiplist){
+            ship.GetComponent<NonPlayer_Ship>().signalShipPlanetDestroyed(transform);
+        }
+    }
 }
