@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
-    Player owner;
+    public Player owner;
 
     public bool template = false;
 
@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour {
         {
             owner = GameObject.Find("Player_Ship").GetComponent<Player>();
             lifeTime = 0;
-            direction = owner.transform.rotation;
+            direction = owner.gameObject.transform.rotation;
         }
 	}
 	
@@ -45,7 +45,7 @@ public class Bullet : MonoBehaviour {
     {
         if (!template)
         {
-            Debug.Log("something hit");
+            
 
             if (col.gameObject.tag == "Asteroid")
             {
@@ -57,7 +57,7 @@ public class Bullet : MonoBehaviour {
             }
             if (col.gameObject.tag == "Planet")
             {
-                Debug.Log("planet hit");
+                
                 col.gameObject.GetComponent<Planet>().death();
                 owner.addScore(15);
                 Destroy(col.gameObject);

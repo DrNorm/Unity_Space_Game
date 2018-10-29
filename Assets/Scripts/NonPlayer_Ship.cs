@@ -61,7 +61,7 @@ public class NonPlayer_Ship : MonoBehaviour {
 
     public void death()
     {
-
+        
     }
 
     public void signalShipPlanetDestroyed(Transform planet)
