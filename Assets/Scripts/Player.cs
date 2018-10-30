@@ -99,6 +99,9 @@ public class Player : MonoBehaviour {
             case 1:
                 shootLvl1();
                 break;
+            case 2:
+                shootLvl2();
+                break;
             default :
                 shootLvl1();
                 break;
@@ -109,6 +112,25 @@ public class Player : MonoBehaviour {
     {
         Transform bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         bullet.gameObject.GetComponent<Bullet>().template = false;
+        
+    }
+
+    private void shootLvl2()
+    {
+        Transform bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        bullet.gameObject.GetComponent<Bullet>().template = false;
+
+
+        Vector3 pos2 = transform.position;
+        pos2.x -= 1;
+        Transform bullet2 = Instantiate(bulletPrefab, pos2, Quaternion.identity);
+        bullet2.gameObject.GetComponent<Bullet>().template = false;
+
+
+        Vector3 pos3 = transform.position;
+        pos3.x += 1;
+        Transform bullet3 = Instantiate(bulletPrefab, pos3, Quaternion.identity);
+        bullet3.gameObject.GetComponent<Bullet>().template = false;
         
     }
     

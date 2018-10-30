@@ -26,7 +26,9 @@ public class ShootPowerUp : PowerUp {
     public override void effect()
     {
 
-
+        player.shootLevel++;
+        isActive = false;
+        Destroy(gameObject);
 
     }
 }

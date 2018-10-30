@@ -16,9 +16,23 @@ public class NonPlayer_Ship : MonoBehaviour {
 
     private bool isPlanetLess = false;
 
+    public int pUpType;
+    private Transform pUpTransform;
+
 	// Use this for initialization
 	void Start () {
-		
+		switch (pUpType)
+        {
+            case 0:
+                pUpTransform = GameObject.Find("SpeedUp").transform;
+                break;
+            case 1:
+                pUpTransform = GameObject.Find("ShootUp").transform;
+                break;
+            default:
+                pUpTransform = GameObject.Find("SpeedUp").transform;
+                break;
+        }
 	}
 	
 	// Update is called once per frame
@@ -61,7 +75,9 @@ public class NonPlayer_Ship : MonoBehaviour {
 
     public void death()
     {
-        
+        Debug.Log("ksdf");
+        Destroy(gameObject);
+        Instantiate(pUpTransform, transform.position, Quaternion.identity);
     }
 
     public void signalShipPlanetDestroyed(Transform planet)

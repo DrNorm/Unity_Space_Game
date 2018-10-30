@@ -11,6 +11,8 @@ public class Bullet : MonoBehaviour {
     private float lifeLength = 3f;
     private float lifeTime = 0f;
 
+    private float speed;
+
     private Quaternion direction;
 
 	// Use this for initialization
@@ -34,8 +36,9 @@ public class Bullet : MonoBehaviour {
             }
             if (!template)
             {
+                speed = owner.moveSpeed;
                 transform.rotation = direction;
-                transform.Translate(Vector3.forward * 15 * Time.deltaTime);
+                transform.Translate(Vector3.forward * 2 * Time.deltaTime*speed );
             }
         }
         
@@ -60,7 +63,6 @@ public class Bullet : MonoBehaviour {
                 
                 col.gameObject.GetComponent<Planet>().death();
                 owner.addScore(15);
-                Destroy(col.gameObject);
                 Destroy(gameObject);
 
 
@@ -69,7 +71,6 @@ public class Bullet : MonoBehaviour {
             {
                 col.gameObject.GetComponent<NonPlayer_Ship>().death();
                 owner.addScore(5);
-                Destroy(col.gameObject);
                 Destroy(gameObject);
 
             }

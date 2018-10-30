@@ -26,10 +26,12 @@ public class Planet : MonoBehaviour {
 
     public void death()
     {
-        Debug.Log("i have dieded");
+       
         GameObject[] shiplist = GameObject.FindGameObjectsWithTag("Ship");
         foreach( GameObject ship in shiplist){
             ship.GetComponent<NonPlayer_Ship>().signalShipPlanetDestroyed(transform);
         }
+
+        Destroy(gameObject);
     }
 }

@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33601965714385550}
   - component: {fileID: 23862784761648126}
   - component: {fileID: 114186100562765592}
+  - component: {fileID: 65884586576268026}
   m_Layer: 0
   m_Name: NonPlayer_Ship
   m_TagString: Untagged
@@ -84,6 +85,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1052683362325098}
   m_Mesh: {fileID: 4300000, guid: 48e40480445692d4d9d2f3ec209c50a4, type: 3}
+--- !u!65 &65884586576268026
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1052683362325098}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.02, y: 0.02, z: 0.04}
+  m_Center: {x: 0, y: 0, z: 0.01}
 --- !u!114 &114186100562765592
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -99,3 +112,4 @@ MonoBehaviour:
   planet2: {fileID: 0}
   speed: 8
   minDistance: 2
+  pUpType: 0
